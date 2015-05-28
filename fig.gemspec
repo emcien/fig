@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name = "fig"
+  s.name = "emcien-fig"
   s.version = "1.0"
   s.date = "2015-05-06"
   s.authors = ["Emcien Engineering"]

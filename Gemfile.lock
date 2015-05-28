@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fig (1.0)
+    emcien-fig (1.0)
       figaro (~> 1.0.0)
 
 GEM
@@ -72,7 +72,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fig!
+  emcien-fig!
   geminabox
   overcommit
   pry
