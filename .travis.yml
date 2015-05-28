@@ -1,0 +1,8 @@
+language: ruby
+cache: bundler
+rvm:
+  - "2.1.5"
+notifications:
+  slack: emcien:Mg6pPXMs3g1YPBGFBpxOrpDz#ops
+script:
+  - bundle exec rspec

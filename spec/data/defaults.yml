@@ -1,0 +1,7 @@
+---
+base:
+  a: "hello"
+  b: 2
+foo:
+  real: true
+  how_many: 55

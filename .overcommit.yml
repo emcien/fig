@@ -1,0 +1,177 @@
+---
+plugin_directory: 'overcommit_hooks'
+verify_plugin_signatures: false
+CommitMsg:
+  ALL:
+    requires_files: false
+    quiet: true
+
+  GerritChangeId: { enabled: false }
+  RussianNovel:   { enabled: false }
+
+  HardTabs:
+    enabled: true
+    description: 'Checking for hard tabs'
+    on_warn: fail
+
+  SingleLineSubject:
+    enabled: true
+    description: 'Checking subject line'
+    on_warn: fail
+
+  TextWidth:
+    enabled: true
+    description: 'Checking text width'
+    max_subject_width: 60
+    max_body_width: 72
+    on_warn: fail
+
+  TrailingPeriod:
+    enabled: true
+    description: 'Checking for trailing periods in subject'
+    on_warn: fail
+
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: warn
+    requires_files: true
+    required: false
+    quiet: true
+
+  ## Turn off a bunch of stuff explicitly
+  BerksfileCheck:   { enabled: false }
+  Brakeman:         { enabled: false }
+  ChamberSecurity:  { enabled: false }
+  CssLint:          { enabled: false }
+  EsLint:           { enabled: false }
+  GoLint:           { enabled: false }
+  ImageOptim:       { enabled: false }
+  JavaCheckstyle:   { enabled: false }
+  Pep257:           { enabled: false }
+  Pep8:             { enabled: false }
+  Pyflakes:         { enabled: false }
+  Pylint:           { enabled: false }
+  PythonFlake8:     { enabled: false }
+  Reek:             { enabled: false }
+  Scalastyle:       { enabled: false }
+  SemiStandard:     { enabled: false }
+  Standard:         { enabled: false }
+  W3cCss:           { enabled: false }
+  W3cHtml:          { enabled: false }
+  TravisLint:       { enabled: false }
+  XmlLint:          { enabled: false }
+  ShellCheck:       { enabled: false }
+  BundleCheck:      { enabled: false }
+  JsonSyntax:       { enabled: false }
+  JsHint:           { enabled: false }
+  Jscs:             { enabled: false }
+
+
+  ################################################################
+  # Leaving the options on these, because we might want them later
+  CoffeeLint:
+    enabled: false
+    description: 'Analyzing with coffeelint'
+    required_executable: 'coffeelint'
+    flags: ['--quiet']
+    install_command: 'npm install -g coffeelint'
+    include: '**/*.coffee'
+
+  ScssLint:
+    enabled: false
+    description: 'Analyzing with scss-lint'
+    required_executable: 'scss-lint'
+    install_command: 'gem install scss-lint'
+    include: '**/*.scss'
+
+
+  AuthorEmail:
+    enabled: true
+    description: 'Checking author email'
+    requires_files: false
+    required: true
+    quiet: true
+    pattern: '^[^@]+@.*$'
+
+  AuthorName:
+    enabled: true
+    description: 'Checking for author name'
+    requires_files: false
+    required: true
+    quiet: true
+
+  BrokenSymlinks:
+    enabled: true
+    description: 'Checking for broken symlinks'
+    quiet: true
+
+  HamlLint:
+    quiet: false
+    enabled: false
+    description: 'Analyzing with haml-lint'
+    required_executable: 'haml-lint'
+    install_command: 'gem install haml-lint'
+    include: '**/*.haml'
+
+  HardTabs:
+    enabled: true
+    description: 'Checking for hard tabs'
+    quiet: true
+    required_executable: 'grep'
+    flags: ['-IHn', "\t"]
+    exclude:
+      - '**/*.go'
+      - '**/Makefile'
+      - 'vendor/assets/**/*'
+      - '.gitmodules'
+
+  LocalPathsInGemfile:
+    enabled: true
+    description: 'Checking for local paths in Gemfile'
+    quiet: true
+    required_executable: 'grep'
+    flags: ['-IHnE', '(\bpath:)|(:path\s*=>)']
+    include: '**/Gemfile'
+
+  MergeConflicts:
+    enabled: true
+    description: 'Checking for merge conflicts'
+    quiet: true
+    required_executable: 'grep'
+    flags: ['-IHn', '^<<<<<<<\s']
+
+  PryBinding:
+    enabled: true
+    description: 'Checking for instances of binding.pry'
+    quiet: true
+    include:
+      - '**/*.rb'
+      - '**/*.rake'
+
+  Rubocop:
+    enabled: true
+    quiet: false
+    description: 'Analyzing with Rubocop'
+    required_executable: 'rubocop'
+    flags: ['--format=emacs', '--force-exclusion']
+    install_command: 'gem install rubocop'
+    include:
+      - '**/*.gemspec'
+      - '**/*.rake'
+      - '**/*.rb'
+      - '**/Gemfile'
+      - '**/Rakefile'
+
+  TrailingWhitespace:
+    enabled: true
+    description: 'Checking for trailing whitespace'
+    required_executable: 'grep'
+    flags: ['-IHn', '\s$']
+    exclude:
+      - 'vendor/assets/**/*'
+      - 'spec/datafiles/**/*'
+
+  YamlSyntax:
+    enabled: true
+    description: 'Checking YAML syntax'
+    include: [ '**/*.yaml', '**/*.yml' ]
