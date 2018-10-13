@@ -1,0 +1,7 @@
+---
+base:
+  a: string
+  b: int
+foo:
+  real: bool
+  how_many: int
