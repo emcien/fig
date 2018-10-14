@@ -1,7 +1,3 @@
-# Specify your gem's dependencies in ..gemspec
-gemspec
+source 'https://rubygems.org'
 
-gem "geminabox"
-gem "rubocop"
-gem "overcommit"
-gem 'pry'
+gemspec
